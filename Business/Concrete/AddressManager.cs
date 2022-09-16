@@ -20,9 +20,9 @@ namespace Business.Concrete
             _addressDal = addressDal;
         }
 
-        public IResult Add(Address address)
+        public async Task<IResult> AddAsync(Address address)
         {
-            _addressDal.Add(address);
+            await _addressDal.AddAsync(address);
             return new SuccessResult(Messages.AddressAdded);
         }
 

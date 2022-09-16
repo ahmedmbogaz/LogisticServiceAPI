@@ -16,19 +16,6 @@ namespace WebAPI.Controllers
             _productService = productService;
         }
 
-        
-
-        [HttpPost("add")]
-        public IActionResult Add(Product product)
-        {
-            var result = _productService.Add(product);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
-        }
-
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
@@ -40,10 +27,10 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpDelete("delete")]
-        public IActionResult Delete(Product product)
+        [HttpPost("add")]
+        public async Task<IActionResult> AddAsync(Product product)
         {
-            var result = _productService.Delete(product);
+            var result = await _productService.AddAsync(product);
             if (result.Success)
             {
                 return Ok(result);
@@ -55,6 +42,17 @@ namespace WebAPI.Controllers
         public IActionResult Update(Product product)
         {
             var result = _productService.Update(product);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpDelete("delete")]
+        public IActionResult Delete(Product product)
+        {
+            var result = _productService.Delete(product);
             if (result.Success)
             {
                 return Ok(result);

@@ -11,7 +11,7 @@ namespace Business.Abstract
     public interface IDeliveryService
     {
         IDataResult<List<Delivery>> GetAll();
-        IResult Add(Delivery delivery);
+        Task<IResult> AddAsync(Delivery delivery);
         IResult Update(Delivery delivery);
         IResult Delete(Delivery delivery);
     }

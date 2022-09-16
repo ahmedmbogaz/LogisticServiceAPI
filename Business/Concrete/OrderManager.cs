@@ -20,9 +20,9 @@ namespace Business.Concrete
             _orderDal = orderDal;
         }
 
-        public IResult Add(Order order)
+        public async Task<IResult> AddAsync(Order order)
         {
-            _orderDal.Add(order);
+            await _orderDal.AddAsync(order);
 
             return new SuccessResult(Messages.OrderAdded);
         }
@@ -38,10 +38,16 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Order>>(_orderDal.GetAll(), Messages.OrdersListed);
         }
 
+        public IDataResult<List<Order>> GetOrdersByDay()
+        {
+            return new SuccessDataResult<List<Order>>(_orderDal.GetAll()
+                .Where(p=>p.OrderTime.AddDays(1)>=DateTime.Now).ToList(), Messages.OrderDay);
+        }
+
         public IResult Update(Order order)
         {
             _orderDal.Update(order);
-            return new SuccessResult(Messages.OrderUpdate);
+            return  new  SuccessResult (Messages.OrderUpdate);
         }
     }
 }

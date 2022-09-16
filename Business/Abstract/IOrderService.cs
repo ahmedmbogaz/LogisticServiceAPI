@@ -10,8 +10,10 @@ namespace Business.Abstract
 {
     public interface IOrderService
     {
+        IDataResult<List<Order>> GetOrdersByDay();
         IDataResult<List<Order>> GetAll();
-        IResult Add(Order order);
+
+        Task<IResult> AddAsync(Order order);
         IResult Update(Order order);
         IResult Delete(Order order);
     }

@@ -27,10 +27,10 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("add")]
-        public IActionResult Add(Order order)
+        [HttpGet("getordersbyday")]
+        public IActionResult GetOrdersByDay()
         {
-            var result = _orderService.Add(order);
+            var result = _orderService.GetOrdersByDay();
             if (result.Success)
             {
                 return Ok(result);
@@ -38,10 +38,10 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpDelete("delete")]
-        public IActionResult Delete(Order order)
+        [HttpPost("add")]
+        public async Task<IActionResult> AddAsync(Order order)
         {
-            var result = _orderService.Delete(order);
+            var result = await _orderService.AddAsync(order);
             if (result.Success)
             {
                 return Ok(result);
@@ -53,6 +53,17 @@ namespace WebAPI.Controllers
         public IActionResult Update(Order order)
         {
             var result = _orderService.Update(order);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpDelete("delete")]
+        public IActionResult Delete(Order order)
+        {
+            var result = _orderService.Delete(order);
             if (result.Success)
             {
                 return Ok(result);

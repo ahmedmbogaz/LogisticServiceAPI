@@ -28,20 +28,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(Address address)
+        public async Task<IActionResult> AddAsync(Address address)
         {
-            var result = _addressService.Add(address);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
-        }
-
-        [HttpDelete("delete")]
-        public IActionResult Delete(Address address)
-        {
-            var result = _addressService.Delete(address);
+            var result = await _addressService.AddAsync(address);
             if (result.Success)
             {
                 return Ok(result);
@@ -53,6 +42,17 @@ namespace WebAPI.Controllers
         public IActionResult Update(Address address)
         {
             var result = _addressService.Update(address);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpDelete("delete")]
+        public IActionResult Delete(Address address)
+        {
+            var result = _addressService.Delete(address);
             if (result.Success)
             {
                 return Ok(result);

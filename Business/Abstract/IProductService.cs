@@ -11,7 +11,7 @@ namespace Business.Abstract
     public interface IProductService
     {
         IDataResult<List<Product>> GetAll();
-        IResult Add(Product product);
+        Task<IResult> AddAsync(Product product);
         IResult Update(Product product);
         IResult Delete(Product product);
     }

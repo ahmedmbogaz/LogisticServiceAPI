@@ -20,10 +20,9 @@ namespace Business.Concrete
             _productDal = productDal;
         }
 
-        public IResult Add(Product product)
+        public async Task<IResult> AddAsync(Product product)
         {
-            _productDal.Add(product);
-
+            await _productDal.AddAsync(product);
             return new SuccessResult(Messages.ProductAdded);
         }
 

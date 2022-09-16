@@ -20,9 +20,9 @@ namespace Business.Concrete
             _deliveryDal = deliveryDal;
         }
 
-        public IResult Add(Delivery delivery)
+        public async Task<IResult> AddAsync(Delivery delivery)
         {
-            _deliveryDal.Add(delivery);
+            await _deliveryDal.AddAsync(delivery);
             return new SuccessResult(Messages.DeliveryAdded);
         }
 

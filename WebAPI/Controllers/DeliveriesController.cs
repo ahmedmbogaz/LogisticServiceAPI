@@ -28,20 +28,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(Delivery delivery)
+        public async Task<IActionResult> AddAsync(Delivery delivery)
         {
-            var result = _deliveryService.Add(delivery);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
-        }
-
-        [HttpDelete("delete")]
-        public IActionResult Delete(Delivery delivery)
-        {
-            var result = _deliveryService.Delete(delivery);
+            var result = await _deliveryService.AddAsync(delivery);
             if (result.Success)
             {
                 return Ok(result);
@@ -53,6 +42,17 @@ namespace WebAPI.Controllers
         public IActionResult Update(Delivery delivery)
         {
             var result = _deliveryService.Update(delivery);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpDelete("delete")]
+        public IActionResult Delete(Delivery delivery)
+        {
+            var result = _deliveryService.Delete(delivery);
             if (result.Success)
             {
                 return Ok(result);

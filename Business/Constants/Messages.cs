@@ -31,5 +31,7 @@ namespace Business.Constants
         public static string OrderUpdate = "Sipariş Güncellendi";
         public static string DeliveryUpdate = "Teslimat Güncellendi";
         public static string CustomerUpdate = "Teslimat Güncellendi";
+
+        public static string OrderDay = "Önceki Gün Siparişleri";
     }
 }

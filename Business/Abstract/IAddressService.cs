@@ -11,7 +11,7 @@ namespace Business.Abstract
     public interface IAddressService
     {
         IDataResult<List<Address>> GetAll();
-        IResult Add(Address address);
+        Task<IResult> AddAsync(Address address);
         IResult Update(Address address);
         IResult Delete(Address address);
     }
