@@ -25,5 +25,22 @@ namespace Business.Concrete
             _deliveryDal.Add(delivery);
             return new SuccessResult(Messages.DeliveryAdded);
         }
+
+        public IResult Delete(Delivery delivery)
+        {
+            _deliveryDal.Delete(delivery);
+            return new SuccessResult(Messages.DeliveryDelete);
+        }
+
+        public IDataResult<List<Delivery>> GetAll()
+        {
+            return new SuccessDataResult<List<Delivery>>(_deliveryDal.GetAll(), Messages.DeliveriesListed);
+        }
+
+        public IResult Update(Delivery delivery)
+        {
+            _deliveryDal.Update(delivery);
+            return new SuccessResult(Messages.DeliveryUpdate);
+        }
     }
 }

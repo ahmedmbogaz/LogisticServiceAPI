@@ -26,5 +26,22 @@ namespace Business.Concrete
 
             return new SuccessResult(Messages.OrderAdded);
         }
+
+        public IResult Delete(Order order)
+        {
+            _orderDal.Delete(order);
+            return new SuccessResult(Messages.OrderDelete);
+        }
+
+        public IDataResult<List<Order>> GetAll()
+        {
+            return new SuccessDataResult<List<Order>>(_orderDal.GetAll(), Messages.OrdersListed);
+        }
+
+        public IResult Update(Order order)
+        {
+            _orderDal.Update(order);
+            return new SuccessResult(Messages.OrderUpdate);
+        }
     }
 }

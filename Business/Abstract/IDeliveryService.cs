@@ -10,6 +10,9 @@ namespace Business.Abstract
 {
     public interface IDeliveryService
     {
+        IDataResult<List<Delivery>> GetAll();
         IResult Add(Delivery delivery);
+        IResult Update(Delivery delivery);
+        IResult Delete(Delivery delivery);
     }
 }

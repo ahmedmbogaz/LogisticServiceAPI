@@ -25,5 +25,22 @@ namespace Business.Concrete
             _addressDal.Add(address);
             return new SuccessResult(Messages.AddressAdded);
         }
+
+        public IResult Delete(Address address)
+        {
+            _addressDal.Delete(address);
+            return new SuccessResult(Messages.AddressDelete);
+        }
+
+        public IDataResult<List<Address>> GetAll()
+        {
+            return new SuccessDataResult<List<Address>>(_addressDal.GetAll(), Messages.AddressesListed);
+        }
+
+        public IResult Update(Address address)
+        {
+            _addressDal.Update(address);
+            return new SuccessResult(Messages.AddressUpdate);
+        }
     }
 }

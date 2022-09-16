@@ -26,5 +26,22 @@ namespace Business.Concrete
 
             return new SuccessResult(Messages.ProductAdded);
         }
+
+        public IResult Delete(Product product)
+        {
+            _productDal.Delete(product);
+            return new SuccessResult(Messages.ProductDelete);
+        }
+
+        public IDataResult<List<Product>> GetAll()
+        {
+            return new SuccessDataResult<List<Product>>(_productDal.GetAll(), Messages.ProductsListed);
+        }
+
+        public IResult Update(Product product)
+        {
+            _productDal.Update(product);
+            return new SuccessResult(Messages.ProductUpdate);
+        }
     }
 }

@@ -16,10 +16,43 @@ namespace WebAPI.Controllers
             _orderService = orderService;
         }
 
+        [HttpGet("getall")]
+        public IActionResult GetAll()
+        {
+            var result = _orderService.GetAll();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
         [HttpPost("add")]
         public IActionResult Add(Order order)
         {
             var result = _orderService.Add(order);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpDelete("delete")]
+        public IActionResult Delete(Order order)
+        {
+            var result = _orderService.Delete(order);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpPatch("update")]
+        public IActionResult Update(Order order)
+        {
+            var result = _orderService.Update(order);
             if (result.Success)
             {
                 return Ok(result);
