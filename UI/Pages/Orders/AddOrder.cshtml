@@ -1,0 +1,26 @@
+﻿@page "/siparis-ekle"
+@model UI.Pages.Orders.AddOrderModel
+@{
+    <div class="row">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title">Sipariş Ekleme Formu</h4>
+                <p class="card-title-desc">
+                </p>
+                <form method="post">
+                    <div class="form-group mb-3">
+                        <label for="formrow-name-input">Blog Tag Adı</label>
+                        <input type="text" asp-for="Order.ReceivedCustomerName" class="form-control">
+                        <div id="content"></div>
+                    </div>
+                    <button class="btn btn-success" type="submit" asp-page-handler="Save">Kaydet</button>
+                    <a class="btn btn-danger" type="button" href="/BlogTags/blogTagList">İptal</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+}
+
